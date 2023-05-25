@@ -11,9 +11,24 @@
       font-size: 14px;
     }
   </style>
+    <meta charset="UTF-8">
+    <title>Mi página web</title>
 </head>
 <body>
-  <pre class="code">
+    <header>
+        <h1>Bienvenido a mi página web</h1>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#">Inicio</a></li>
+            <li><a href="#">Acerca de</a></li>
+            <li><a href="#">Contacto</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <pre class="code">
     <span style="color: #800000;">&lt;!DOCTYPE</span> <span style="color: #000080;">html</span><span style="color: #800000;">&gt;</span>
     <span style="color: #800000;">&lt;</span><span style="color: #000080;">html</span><span style="color: #800000;">&gt;</span>
     <span style="color: #800000;">&lt;</span><span style="color: #000080;">head</span><span style="color: #800000;">&gt;</span>
@@ -23,7 +38,6 @@
       <span style="color: #800000;">&lt;</span><span style="color: #000080;">h1</span><span style="color: #800000;">&gt;</span>Hello, World!<span style="color: #800000;">&lt;/</span><span style="color: #000080;">h1</span><span style="color: #800000;">&gt;</span>
     <span style="color: #800000;">&lt;/</span><span style="color: #000080;">body</span><span style="color: #800000;">&gt;</span>
   <span style="color: #800000;">&lt;/</span><span style="color: #000080;">html</span><span style="color: #800000;">&gt;</span>
-  
   import tkinter as tk
 import urllib.request
 import json
@@ -75,8 +89,12 @@ resultados = tk.Text(ventana, font=("Arial", 12), width=40, height=6)
 resultados.pack()
 
 ventana.mainloop()
+</pre>
+    </main>
 
-  
-  </pre>
+    <footer>
+        <p>Derechos de autor &copy; 2023 Mi página web</p>
+    </footer>
 </body>
 </html>
+
