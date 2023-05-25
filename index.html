@@ -1,29 +1,82 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
-    <title>Mi página web</title>
+  <style>
+    .code {
+      font-family: "Courier New", monospace;
+      background-color: #f1f1f1;
+      padding: 10px;
+      color: #333;
+      white-space: pre-wrap;
+      font-size: 14px;
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <h1>Bienvenido a mi página web</h1>
-    </header>
+  <pre class="code">
+    <span style="color: #800000;">&lt;!DOCTYPE</span> <span style="color: #000080;">html</span><span style="color: #800000;">&gt;</span>
+    <span style="color: #800000;">&lt;</span><span style="color: #000080;">html</span><span style="color: #800000;">&gt;</span>
+    <span style="color: #800000;">&lt;</span><span style="color: #000080;">head</span><span style="color: #800000;">&gt;</span>
+      <span style="color: #800000;">&lt;</span><span style="color: #000080;">title</span><span style="color: #800000;">&gt;</span>Sample Page<span style="color: #800000;">&lt;/</span><span style="color: #000080;">title</span><span style="color: #800000;">&gt;</span>
+    <span style="color: #800000;">&lt;/</span><span style="color: #000080;">head</span><span style="color: #800000;">&gt;</span>
+    <span style="color: #800000;">&lt;</span><span style="color: #000080;">body</span><span style="color: #800000;">&gt;</span>
+      <span style="color: #800000;">&lt;</span><span style="color: #000080;">h1</span><span style="color: #800000;">&gt;</span>Hello, World!<span style="color: #800000;">&lt;/</span><span style="color: #000080;">h1</span><span style="color: #800000;">&gt;</span>
+    <span style="color: #800000;">&lt;/</span><span style="color: #000080;">body</span><span style="color: #800000;">&gt;</span>
+  <span style="color: #800000;">&lt;/</span><span style="color: #000080;">html</span><span style="color: #800000;">&gt;</span>
+  
+  import tkinter as tk
+import urllib.request
+import json
 
-    <nav>
-        <ul>
-            <li><a href="#">Inicio</a></li>
-            <li><a href="#">Acerca de</a></li>
-            <li><a href="#">Contacto</a></li>
-        </ul>
-    </nav>
 
-    <main>
-        <h2>Contenido principal</h2>
-        <p>¡Hola, mundo!</p>
-    </main>
+def obtener_valor_uf():
+    fecha = entrada.get()
+    url = f'https://mindicador.cl/api/uf/{fecha}'
+    peticion = urllib.request.Request(
+        url,
+        data=None,
+        headers={
+            'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/35.0.1916.47 Safari/537.36'
+        }
+    )
+    respuesta = urllib.request.urlopen(peticion)
+    cuerpo_respuesta = respuesta.read()
+    json_respuesta = json.loads(cuerpo_respuesta.decode("utf-8"))
 
-    <footer>
-        <p>Derechos de autor &copy; 2023 Mi página web</p>
-    </footer>
+    valores_uf = []
+    for valor in json_respuesta['serie']:
+        valor_dia = "El valor del día ({}) fue de: {} pesos chilenos".format(valor['fecha'], valor['valor'])
+        valores_uf.append(valor_dia)
+
+    resultados.delete("1.0", tk.END)
+
+    for valor in valores_uf:
+        resultados.insert(tk.END, valor + "\n")
+
+
+ventana = tk.Tk()
+ventana.title("Valor UF")
+ventana.geometry("400x300")
+
+etiqueta_fecha = tk.Label(ventana, text="Ingrese la fecha (formato: dd-mm-yyyy):", font=("Arial", 12))
+etiqueta_fecha.pack(pady=10)
+
+entrada = tk.Entry(ventana, font=("Arial", 12))
+entrada.pack()
+
+boton_obtener = tk.Button(ventana, text="Obtener valor UF", command=obtener_valor_uf, font=("Arial", 12), bg="#007bff",
+                          fg="white")
+boton_obtener.pack(pady=10)
+
+etiqueta_respuesta = tk.Label(ventana, text="Valor del día en UF:", font=("Arial", 12))
+etiqueta_respuesta.pack(pady=10)
+
+resultados = tk.Text(ventana, font=("Arial", 12), width=40, height=6)
+resultados.pack()
+
+ventana.mainloop()
+
+  
+  </pre>
 </body>
 </html>
