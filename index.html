@@ -1,11 +1,17 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <style>
-    .code {
-      font-family: "Courier New", monospace;
+ <style>
+    .code-container {
+      width: 400px;
+      height: 200px;
+      overflow: auto;
       background-color: #f1f1f1;
       padding: 10px;
+    }
+    
+    .code {
+      font-family: "Courier New", monospace;
       color: #333;
       white-space: pre-wrap;
       font-size: 14px;
@@ -28,17 +34,24 @@
     </nav>
 
     <main>
-        <pre class="code">
-    <span style="color: #800000;">&lt;!DOCTYPE</span> <span style="color: #000080;">html</span><span style="color: #800000;">&gt;</span>
-    <span style="color: #800000;">&lt;</span><span style="color: #000080;">html</span><span style="color: #800000;">&gt;</span>
-    <span style="color: #800000;">&lt;</span><span style="color: #000080;">head</span><span style="color: #800000;">&gt;</span>
-      <span style="color: #800000;">&lt;</span><span style="color: #000080;">title</span><span style="color: #800000;">&gt;</span>Sample Page<span style="color: #800000;">&lt;/</span><span style="color: #000080;">title</span><span style="color: #800000;">&gt;</span>
-    <span style="color: #800000;">&lt;/</span><span style="color: #000080;">head</span><span style="color: #800000;">&gt;</span>
-    <span style="color: #800000;">&lt;</span><span style="color: #000080;">body</span><span style="color: #800000;">&gt;</span>
-      <span style="color: #800000;">&lt;</span><span style="color: #000080;">h1</span><span style="color: #800000;">&gt;</span>Hello, World!<span style="color: #800000;">&lt;/</span><span style="color: #000080;">h1</span><span style="color: #800000;">&gt;</span>
-    <span style="color: #800000;">&lt;/</span><span style="color: #000080;">body</span><span style="color: #800000;">&gt;</span>
-  <span style="color: #800000;">&lt;/</span><span style="color: #000080;">html</span><span style="color: #800000;">&gt;</span>
-  import tkinter as tk
+      <div class="code-container">
+    <pre class="code">
+      &lt;!DOCTYPE html&gt;
+      &lt;html&gt;
+      &lt;head&gt;
+        &lt;style&gt;
+          body {
+            background-color: #000;
+            color: #fff;
+          }
+        &lt;/style&gt;
+      &lt;/head&gt;
+      &lt;body&gt;
+        &lt;h1&gt;Hello, World!&lt;/h1&gt;
+      &lt;/body&gt;
+      &lt;/html&gt;
+      
+      import tkinter as tk
 import urllib.request
 import json
 
@@ -89,7 +102,8 @@ resultados = tk.Text(ventana, font=("Arial", 12), width=40, height=6)
 resultados.pack()
 
 ventana.mainloop()
-</pre>
+    </pre>
+  </div>
     </main>
 
     <footer>
